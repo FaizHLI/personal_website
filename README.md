@@ -1,36 +1,162 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Faiz Ali - Personal Website
+
+A modern, responsive personal website built with Next.js, TypeScript, and Tailwind CSS.
+
+## Features
+
+- 🎨 Modern, responsive design with dark mode support
+- ⚡ Fast performance with Next.js 14 and App Router
+- 📱 Mobile-first responsive design
+- 🎯 SEO optimized with proper metadata
+- 🔧 TypeScript for better development experience
+- 🎨 Tailwind CSS for styling
+- 📦 Modular component architecture
+- 🚀 Easy to customize and deploy
+
+## Tech Stack
+
+- **Framework**: Next.js 14 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Deployment**: Vercel (recommended)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <your-repo-url>
+cd personal_website
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the development server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Learn More
+## Customization
 
-To learn more about Next.js, take a look at the following resources:
+### Personal Information
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Edit `src/data/content.ts` to update your personal information:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```typescript
+export const personalInfo = {
+  name: "Your Name",
+  title: "Your Title",
+  location: "Your Location",
+  bio: "Your bio...",
+  about: "More about you..."
+};
+```
 
-## Deploy on Vercel
+### Social Links
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Update your social media links in the same file:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```typescript
+export const socialLinks = {
+  github: "https://github.com/yourusername",
+  linkedin: "https://linkedin.com/in/yourusername",
+  twitter: "https://twitter.com/yourusername",
+  email: "your.email@example.com"
+};
+```
+
+### Skills
+
+Add or modify your skills in the `skills` array:
+
+```typescript
+export const skills: Skill[] = [
+  { name: "React", icon: "⚛️", category: "frontend" },
+  { name: "Next.js", icon: "▲", category: "frontend" },
+  // Add more skills...
+];
+```
+
+### Projects
+
+Update your projects in the `projects` array:
+
+```typescript
+export const projects: Project[] = [
+  {
+    title: "Your Project",
+    description: "Project description...",
+    tech: ["React", "Node.js", "MongoDB"],
+    link: "https://your-project.com",
+    github: "https://github.com/yourusername/project"
+  },
+  // Add more projects...
+];
+```
+
+### Styling
+
+The website uses Tailwind CSS for styling. You can customize colors, fonts, and other styles by modifying the Tailwind classes in the components.
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── layout.tsx          # Root layout with metadata
+│   ├── page.tsx            # Homepage
+│   └── globals.css         # Global styles
+├── components/
+│   ├── Button.tsx          # Reusable button component
+│   ├── Navigation.tsx     # Navigation component
+│   └── ProjectCard.tsx    # Project card component
+└── data/
+    └── content.ts          # All content data
+```
+
+## Deployment
+
+### Vercel (Recommended)
+
+1. Push your code to GitHub
+2. Connect your repository to Vercel
+3. Deploy automatically
+
+### Other Platforms
+
+The website can be deployed to any platform that supports Next.js:
+
+- Netlify
+- Railway
+- DigitalOcean App Platform
+- AWS Amplify
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## Support
+
+If you have any questions or need help customizing the website, feel free to open an issue or contact me.
+
+---
+
+Built with ❤️ using Next.js and Tailwind CSS
