@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Button from "@/components/Button";
 import ProjectCard from "@/components/ProjectCard";
+import Image from "next/image";
 import { skills, projects, socialLinks, personalInfo } from "@/data/content";
 
 export default function Home() {
@@ -13,10 +14,15 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center">
             <div className="mb-10">
-              <div className="w-32 h-32 sm:w-36 sm:h-36 mx-auto mb-8 rounded-full bg-gradient-to-r from-blue-600 to-indigo-700 flex items-center justify-center border-4 border-blue-500/20 shadow-2xl">
-                <span className="text-4xl sm:text-5xl font-bold text-white font-poppins">
-                  {personalInfo.name.split(' ').map(n => n[0]).join('')}
-                </span>
+            <div className="w-32 h-32 sm:w-36 sm:h-36 mx-auto mb-8 rounded-full overflow-hidden border-4 border-blue-500/20 shadow-2xl">
+                <Image 
+                  src="/images/me.jpg"   
+                  alt={`${personalInfo.name} profile photo`}
+                  width={144}            
+                  height={144}
+                  className="object-cover w-full h-full"
+                  priority
+                />
               </div>
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-slate-800 mb-6 leading-tight font-poppins px-4">
