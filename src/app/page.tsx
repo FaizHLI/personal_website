@@ -16,7 +16,7 @@ export default function Home() {
             <div className="mb-10">
             <div className="w-32 h-32 sm:w-36 sm:h-36 mx-auto mb-8 rounded-full overflow-hidden border-4 border-blue-500/20 shadow-2xl">
                 <Image 
-                  src="/images/me.jpg"   
+                  src="/images/me.jpeg"   
                   alt={`${personalInfo.name} profile photo`}
                   width={144}            
                   height={144}
