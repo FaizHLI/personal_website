@@ -22,7 +22,7 @@ export default function Home() {
 
   useEffect(() => {
     const currentRole = roles[roleIndex];
-    let typingSpeed = isDeleting ? 50 : 120;
+    const typingSpeed = isDeleting ? 50 : 120;
 
     const timeout = setTimeout(() => {
       if (!isDeleting && charIndex < currentRole.length) {
