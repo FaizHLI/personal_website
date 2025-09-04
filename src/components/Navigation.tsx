@@ -15,18 +15,18 @@ export default function Navigation() {
   return (
     <nav className="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-slate-200 shadow-lg">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="text-xl font-bold text-slate-800 font-poppins">
+        <div className="flex justify-between items-center h-14 sm:h-16">
+          <div className="text-lg sm:text-xl font-bold text-slate-800 font-poppins">
             Faiz Ali
           </div>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex space-x-6 lg:space-x-8">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="text-slate-600 hover:text-blue-600 transition-all duration-300 font-medium relative group font-inter"
+                className="text-slate-600 hover:text-blue-600 transition-all duration-300 font-medium relative group font-inter text-sm lg:text-base"
               >
                 {item.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
@@ -38,9 +38,10 @@ export default function Navigation() {
           <button
             className="md:hidden p-2 rounded-lg text-slate-600 hover:text-slate-800 hover:bg-slate-100 transition-all duration-300"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
           >
             <svg
-              className="w-6 h-6"
+              className="w-5 h-5 sm:w-6 sm:h-6"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -72,7 +73,7 @@ export default function Navigation() {
                 <a
                   key={item.href}
                   href={item.href}
-                  className="block px-3 py-3 text-slate-600 hover:text-blue-600 hover:bg-slate-50 transition-all duration-300 rounded-lg font-medium font-inter"
+                  className="block px-3 py-3 text-slate-600 hover:text-blue-600 hover:bg-slate-50 transition-all duration-300 rounded-lg font-medium font-inter text-sm sm:text-base"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}
