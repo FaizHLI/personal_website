@@ -82,16 +82,16 @@ export const projects: Project[] = [
 ];
 
 export const socialLinks = {
-  github: "https://github.com/faizali",
+  github: "https://github.com/FaizHLI",
   linkedin: "https://linkedin.com/in/faiz-husnain-ali",
   email: "faizhusnainali@gmail.com"
 };
 
 export const personalInfo = {
   name: "Faiz Ali",
-  title: "Full Stack Software Engineer",
-  location: "Durham, NC",
-  education: "Duke University - Bachelor of Science in Electrical and Computer Engineering and Computer Science",
-  bio: "I'm a passionate software engineer with expertise in full-stack development, cloud infrastructure, and machine learning. I love building scalable applications that solve real-world problems and drive business value.",
-  about: "Currently pursuing my degree at Duke University, I've gained hands-on experience through internships at Fidelity Investments and various software engineering roles. I specialize in Python, React, AWS, and emerging technologies like Terraform and machine learning frameworks."
+  title: "Software Engineer",
+  location: "Greenville, SC",
+  education: "Duke University: BSE in Electrical and Computer Engineering & Computer Science",
+  bio: "I'm a passionate software engineer with expertise in full-stack development, cloud infrastructure, and machine learning.",
+  about: "Currently pursuing my degree at Duke University, I've gained hands-on experience through internships at Fidelity Investments and various software engineering roles."
 };

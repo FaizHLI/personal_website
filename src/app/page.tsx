@@ -1,58 +1,117 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Navigation from "@/components/Navigation";
 import Button from "@/components/Button";
 import ProjectCard from "@/components/ProjectCard";
 import Image from "next/image";
 import { skills, projects, socialLinks, personalInfo } from "@/data/content";
 
+// Roles to type out
+const roles = [
+  "Software Engineer",
+  "Full Stack Developer",
+  "Cloud & Infrastructure Engineer",
+];
+
 export default function Home() {
+  const [text, setText] = useState("");
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentRole = roles[roleIndex];
+    let typingSpeed = isDeleting ? 50 : 120;
+
+    const timeout = setTimeout(() => {
+      if (!isDeleting && charIndex < currentRole.length) {
+        setText(currentRole.substring(0, charIndex + 1));
+        setCharIndex((prev) => prev + 1);
+      } else if (isDeleting && charIndex > 0) {
+        setText(currentRole.substring(0, charIndex - 1));
+        setCharIndex((prev) => prev - 1);
+      } else if (!isDeleting && charIndex === currentRole.length) {
+        setTimeout(() => setIsDeleting(true), 1200); // pause before deleting
+      } else if (isDeleting && charIndex === 0) {
+        setIsDeleting(false);
+        setRoleIndex((prev) => (prev + 1) % roles.length);
+      }
+    }, typingSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [charIndex, isDeleting, roleIndex]);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
       <Navigation />
 
       {/* Hero Section */}
       <section className="pt-28 pb-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center">
-            <div className="mb-10">
-            <div className="w-32 h-32 sm:w-36 sm:h-36 mx-auto mb-8 rounded-full overflow-hidden border-4 border-blue-500/20 shadow-2xl">
-                <Image 
-                  src="/images/me.jpeg"   
-                  alt={`${personalInfo.name} profile photo`}
-                  width={144}            
-                  height={144}
-                  className="object-cover w-full h-full"
-                  priority
-                />
-              </div>
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          
+          {/* Left: Profile Image */}
+          <div className="flex justify-center lg:justify-start">
+            <div className="relative w-56 h-56 sm:w-72 sm:h-72 rounded-full overflow-hidden border-4 border-indigo-500 shadow-2xl group">
+              <Image 
+                src="/images/me.jpeg"
+                alt={`${personalInfo.name} profile photo`}
+                width={288}
+                height={288}
+                className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                priority
+              />
+              {/* Glow effect */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-500/30 via-indigo-500/30 to-purple-500/30 blur-3xl opacity-70"></div>
             </div>
-            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-slate-800 mb-6 leading-tight font-poppins px-4">
-              Hi, I&apos;m <span className="text-blue-600 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">{personalInfo.name}</span>
+          </div>
+
+          {/* Right: Text Content */}
+          <div className="text-center lg:text-left space-y-6">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold font-poppins leading-tight">
+              <span className="block text-slate-700">Hi, I&apos;m</span>
+              <span className="block bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                {personalInfo.name}
+              </span>
             </h1>
-            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-slate-600 mb-6 max-w-4xl mx-auto font-light leading-relaxed font-inter px-4">
-              {personalInfo.title} passionate about building scalable applications
+
+            {/* Typewriter Effect */}
+            <p className="text-lg sm:text-xl md:text-2xl text-blue-700 font-medium font-inter min-h-[2.5rem]">
+              {text}
+              <span className="border-r-2 border-blue-700 animate-pulse ml-1"></span>
             </p>
-            <p className="text-base sm:text-lg md:text-xl text-slate-500 mb-10 max-w-3xl mx-auto leading-relaxed font-inter px-4">
+
+            <p className="text-base sm:text-lg md:text-xl text-slate-500 max-w-xl leading-relaxed font-inter mx-auto lg:mx-0">
               {personalInfo.education}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4">
-              <Button href="#contact" className="w-full sm:w-auto text-base sm:text-lg px-8 sm:px-10 py-3 sm:py-4">
+
+            {/* Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 pt-4 justify-center lg:justify-start">
+              <Button 
+                href="#contact" 
+                variant="primary"
+                className="px-8 sm:px-10 py-3 sm:py-4 text-lg"
+              >
                 Get In Touch
               </Button>
-              <Button href="#projects" variant="secondary" className="w-full sm:w-auto text-base sm:text-lg px-8 sm:px-10 py-3 sm:py-4">
+              <Button 
+                href="#projects" 
+                variant="secondary"
+                className="px-8 sm:px-10 py-3 sm:py-4 text-lg"
+              >
                 View My Work
               </Button>
             </div>
           </div>
         </div>
       </section>
-
       {/* About Section */}
       <section id="about" className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white/80 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center text-slate-800 mb-12 sm:mb-16 font-poppins px-4">
             About Me
           </h2>
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start lg:items-center">
             <div className="space-y-6 text-center lg:text-left">
               <p className="text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed font-inter">
                 {personalInfo.bio}
