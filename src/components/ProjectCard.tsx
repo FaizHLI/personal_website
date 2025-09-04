@@ -4,7 +4,6 @@ interface Project {
   title: string;
   description: string;
   tech: string[];
-  link: string;
   image?: string;
 }
 
@@ -42,25 +41,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           </span>
         ))}
       </div>
-      <a
-        href={project.link}
-        className="text-blue-600 hover:text-blue-700 font-semibold inline-flex items-center group mt-auto font-inter text-sm sm:text-base"
-      >
-        <span>View Project</span>
-        <svg
-          className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-          />
-        </svg>
-      </a>
     </div>
   );
 }
